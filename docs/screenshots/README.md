@@ -1,10 +1,9 @@
 # Screenshot Assets
 
-Drop your app screenshots or GIFs here.
+Current demo assets:
 
-Recommended file names:
+- `img1.jpeg`
+- `img2.jpeg`
+- `video.mp4`
 
-- `matchmate-list.png`
-- `matchmate-demo.gif`
-
-Then update `README.md` with the correct image paths.
+These files are referenced from the repository `README.md`.

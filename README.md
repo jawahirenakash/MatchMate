@@ -52,12 +52,13 @@ MatchMate uses a simple MVVM architecture with a repository layer and service ab
 
 ## Screenshots / Demo
 
-Add screenshots or a short GIF under `docs/screenshots/` and update this section with the actual file names.
+Media assets are included in `docs/screenshots/`:
 
-Example:
+- `docs/screenshots/img1.jpeg`
+- `docs/screenshots/img2.jpeg`
+- `docs/screenshots/video.mp4`
 
-- `docs/screenshots/matchmate-list.png`
-- `docs/screenshots/matchmate-demo.gif`
+Preview the visual walkthrough in the demo video, and the screenshots in the folder above.
 
 ## Folder structure
 
