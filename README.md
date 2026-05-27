@@ -60,10 +60,11 @@ MatchMate uses a simple MVVM architecture with a repository layer and service ab
 
 ### Demo Video
 
-<video controls width="100%" preload="metadata">
-  <source src="docs/screenshots/video.mp4" type="video/mp4">
-  Your browser does not support the video tag.
-</video>
+![MatchMate demo preview](docs/screenshots/video-preview.gif)
+
+The demo walkthrough is available as a downloadable video here:
+
+- [Download demo video](docs/screenshots/video.mp4)
 
 ## Folder structure
 
