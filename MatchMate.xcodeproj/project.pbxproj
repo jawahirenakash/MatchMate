@@ -9,18 +9,49 @@
 /* Begin PBXBuildFile section */
 		2357DA512FC70E2700C19B6D /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 2357DA502FC70E2700C19B6D /* SDWebImageSwiftUI */; };
 		2357DA732FC7151F00C19B6D /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 2357DA722FC7151F00C19B6D /* RealmSwift */; };
+		01CD0A31B206858EC373F2A2 /* MatchMateApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BE56A895A67FA6AA414177E /* MatchMateApp.swift */; };
+		28AA76548AABB8589EC6965D /* MatchUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1B4B6A59E87DCD4D710326 /* MatchUser.swift */; };
+		7A85457B658D292189B6DEB8 /* RealmMatchObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61945CDE57006E346E05ACAE /* RealmMatchObject.swift */; };
+		D5AE527D4AFDE8B2AA1B14CB /* MatchRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 619347C9B019A294A979D1A1 /* MatchRepository.swift */; };
+		A25C1851DC6137FB09BAD54B /* NetworkMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD9F263C2943451D1AFB1912 /* NetworkMonitor.swift */; };
+		BBB62D3A8EEBAF631D5C30C3 /* UserAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7F619E89A4A687C3036F7D /* UserAPIService.swift */; };
+		299E61A4F3B6FE7129457CE3 /* MatchListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DFF9722EA0FF6C14C706D774 /* MatchListViewModel.swift */; };
+		8C84F6203B875DE98DBD4078 /* MatchCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5DF54EF49BEBC2BF8A4CE4C /* MatchCardView.swift */; };
+		B51B6130A820E823E334909D /* MatchListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8175AE61E2230A7AA290F33 /* MatchListView.swift */; };
+		BC30D32213AAE79C138B5DDF /* StatusBadgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E291E7200F60A82B89C0D57C /* StatusBadgeView.swift */; };
+		3E243F60B97FE17ACB53B8C7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 28911CA10246A3FB138BEEF7 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		2357DA3A2FC7094200C19B6D /* MatchMate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MatchMate.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4BE56A895A67FA6AA414177E /* MatchMateApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MatchMateApp.swift; path = MatchMateApp.swift; sourceTree = "<group>"; };
+		BF1B4B6A59E87DCD4D710326 /* MatchUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MatchUser.swift; path = MatchUser.swift; sourceTree = "<group>"; };
+		61945CDE57006E346E05ACAE /* RealmMatchObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RealmMatchObject.swift; path = RealmMatchObject.swift; sourceTree = "<group>"; };
+		619347C9B019A294A979D1A1 /* MatchRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MatchRepository.swift; path = MatchRepository.swift; sourceTree = "<group>"; };
+		BD9F263C2943451D1AFB1912 /* NetworkMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NetworkMonitor.swift; path = NetworkMonitor.swift; sourceTree = "<group>"; };
+		0F7F619E89A4A687C3036F7D /* UserAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UserAPIService.swift; path = UserAPIService.swift; sourceTree = "<group>"; };
+		DFF9722EA0FF6C14C706D774 /* MatchListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MatchListViewModel.swift; path = MatchListViewModel.swift; sourceTree = "<group>"; };
+		E5DF54EF49BEBC2BF8A4CE4C /* MatchCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MatchCardView.swift; path = MatchCardView.swift; sourceTree = "<group>"; };
+		C8175AE61E2230A7AA290F33 /* MatchListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MatchListView.swift; path = MatchListView.swift; sourceTree = "<group>"; };
+		E291E7200F60A82B89C0D57C /* StatusBadgeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = StatusBadgeView.swift; path = StatusBadgeView.swift; sourceTree = "<group>"; };
+		28911CA10246A3FB138BEEF7 /* Assets.xcassets */ = {isa = PBXFileReference; explicitFileType = folder.assetcatalog; includeInIndex = 0; path = Assets.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		2357DA3C2FC7094200C19B6D /* MatchMate */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			name = MatchMate;
-			path = /Users/user295386/Desktop/MatchMate/MatchMate;
-			sourceTree = "<absolute>";
+			path = MatchMate;
+			sourceTree = SOURCE_ROOT;
+			children = (
+				4BE56A895A67FA6AA414177E /* MatchMateApp.swift */,
+				28911CA10246A3FB138BEEF7 /* Assets.xcassets */,
+				F65A0F14D503AF8C3643E8AD /* Model */,
+				D15C4BEFA675C2BEF5FFB9C0 /* Repository */,
+				9A57BF1910370FA9BE9FFCC0 /* Services */,
+				5E5C6C0A678B75284C7FC02A /* ViewModels */,
+				F72D132A1F1F2DAA220D3F09 /* Views */,
+			);
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
@@ -51,6 +82,55 @@
 				2357DA3A2FC7094200C19B6D /* MatchMate.app */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		F65A0F14D503AF8C3643E8AD /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				BF1B4B6A59E87DCD4D710326 /* MatchUser.swift */,
+				61945CDE57006E346E05ACAE /* RealmMatchObject.swift */,
+			);
+			name = Model;
+			path = Model;
+			sourceTree = "<group>";
+		};
+		D15C4BEFA675C2BEF5FFB9C0 /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				619347C9B019A294A979D1A1 /* MatchRepository.swift */,
+			);
+			name = Repository;
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		9A57BF1910370FA9BE9FFCC0 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				BD9F263C2943451D1AFB1912 /* NetworkMonitor.swift */,
+				0F7F619E89A4A687C3036F7D /* UserAPIService.swift */,
+			);
+			name = Services;
+			path = Services;
+			sourceTree = "<group>";
+		};
+		5E5C6C0A678B75284C7FC02A /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				DFF9722EA0FF6C14C706D774 /* MatchListViewModel.swift */,
+			);
+			name = ViewModels;
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		F72D132A1F1F2DAA220D3F09 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				E5DF54EF49BEBC2BF8A4CE4C /* MatchCardView.swift */,
+				C8175AE61E2230A7AA290F33 /* MatchListView.swift */,
+				E291E7200F60A82B89C0D57C /* StatusBadgeView.swift */,
+			);
+			name = Views;
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -123,6 +203,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3E243F60B97FE17ACB53B8C7 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -133,6 +214,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				01CD0A31B206858EC373F2A2 /* MatchMateApp.swift in Sources */,
+				28AA76548AABB8589EC6965D /* MatchUser.swift in Sources */,
+				7A85457B658D292189B6DEB8 /* RealmMatchObject.swift in Sources */,
+				D5AE527D4AFDE8B2AA1B14CB /* MatchRepository.swift in Sources */,
+				A25C1851DC6137FB09BAD54B /* NetworkMonitor.swift in Sources */,
+				BBB62D3A8EEBAF631D5C30C3 /* UserAPIService.swift in Sources */,
+				299E61A4F3B6FE7129457CE3 /* MatchListViewModel.swift in Sources */,
+				8C84F6203B875DE98DBD4078 /* MatchCardView.swift in Sources */,
+				B51B6130A820E823E334909D /* MatchListView.swift in Sources */,
+				BC30D32213AAE79C138B5DDF /* StatusBadgeView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
