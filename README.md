@@ -52,13 +52,18 @@ MatchMate uses a simple MVVM architecture with a repository layer and service ab
 
 ## Screenshots / Demo
 
-Media assets are included in `docs/screenshots/`:
+### Screenshots
 
-- `docs/screenshots/img1.jpeg`
-- `docs/screenshots/img2.jpeg`
-- `docs/screenshots/video.mp4`
+![MatchMate screenshot 1](docs/screenshots/img1.jpeg)
 
-Preview the visual walkthrough in the demo video, and the screenshots in the folder above.
+![MatchMate screenshot 2](docs/screenshots/img2.jpeg)
+
+### Demo Video
+
+<video controls width="100%" preload="metadata">
+  <source src="docs/screenshots/video.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
 
 ## Folder structure
 
