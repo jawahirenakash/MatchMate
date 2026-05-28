@@ -7,17 +7,16 @@
 
 
 import Foundation
-import Combine
 
 class UserAPIService {
     static let shared = UserAPIService()
+    
+    private init() {}
+    
     private let url = URL(string: "https://jsonplaceholder.typicode.com/users")!
 
-    func fetchUsers() -> AnyPublisher<[MatchUser], Error> {
-        URLSession.shared.dataTaskPublisher(for: url)
-            .map(\.data)
-            .decode(type: [MatchUser].self, decoder: JSONDecoder())
-            .receive(on: DispatchQueue.main)
-            .eraseToAnyPublisher()
+    func fetchUsers() async throws -> [MatchUser] {
+        let (data, _) = try await URLSession.shared.data(from: url)
+        return try JSONDecoder().decode([MatchUser].self, from: data)
     }
 }

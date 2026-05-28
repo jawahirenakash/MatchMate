@@ -7,32 +7,21 @@
 
 
 import Foundation
-import Combine
 import RealmSwift
 
-class MatchRepository {
+class MatchRepository: MatchRepositoryProtocol {
     static let shared = MatchRepository()
-    private var cancellables = Set<AnyCancellable>()
+    
+    private init() {}
 
-    // Read all matches from Realm (offline-capable)
     func loadMatches() -> [RealmMatchObject] {
         let realm = try! Realm()
         return Array(realm.objects(RealmMatchObject.self))
     }
 
-    // Fetch from API, save to Realm (only when online)
-    func fetchAndSync(completion: @escaping () -> Void) {
-        UserAPIService.shared.fetchUsers()
-            .sink(receiveCompletion: { result in
-                if case .failure(let error) = result {
-                    print("API error: \(error.localizedDescription)")
-                    completion() // still show cached data
-                }
-            }, receiveValue: { [weak self] users in
-                self?.saveToRealm(users: users)
-                completion()
-            })
-            .store(in: &cancellables)
+    func fetchAndSync() async throws {
+        let users = try await UserAPIService.shared.fetchUsers()
+        saveToRealm(users: users)
     }
     
     private func saveToRealm(users: [MatchUser]) {
@@ -40,12 +29,10 @@ class MatchRepository {
         try! realm.write {
             for user in users {
                 if let existing = realm.object(ofType: RealmMatchObject.self, forPrimaryKey: user.id) {
-                    // Update API fields but preserve user decision
                     existing.name = user.name
                     existing.city = user.address.city
                     existing.company = user.company.name
                     existing.email = user.email
-                    // existing.status is intentionally NOT touched
                 } else {
                     realm.add(RealmMatchObject(from: user))
                 }
@@ -53,7 +40,6 @@ class MatchRepository {
         }
     }
 
-    // Update accept/decline status
     func updateStatus(id: Int, status: MatchStatus) {
         let realm = try! Realm()
         if let match = realm.object(ofType: RealmMatchObject.self, forPrimaryKey: id) {

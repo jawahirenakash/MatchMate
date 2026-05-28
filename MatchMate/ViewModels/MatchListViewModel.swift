@@ -10,24 +10,31 @@ import Foundation
 import Combine
 import RealmSwift
 
+@MainActor
 class MatchListViewModel: ObservableObject {
     @Published var matches: [RealmMatchObject] = []
     @Published var isLoading: Bool = false
     @Published var errorMessage: String? = nil
 
-    private let repo = MatchRepository.shared
-    private let network = NetworkMonitor.shared
+    private let repo: MatchRepositoryProtocol
+    private let network: NetworkMonitor
     private var cancellables = Set<AnyCancellable>()
 
-    init() {
+    init(repo: MatchRepositoryProtocol = MatchRepository.shared, network: NetworkMonitor = .shared) {
+        self.repo = repo
+        self.network = network
         loadFromCache()
-        syncIfOnline()
 
-        // Auto-sync when connection is restored
+        if network.isConnected {
+            Task { await syncIfOnline() }
+        }
+
         network.$isConnected
             .removeDuplicates()
             .sink { [weak self] online in
-                if online { self?.syncIfOnline() }
+                if online {
+                    Task { [weak self] in await self?.syncIfOnline() }
+                }
             }
             .store(in: &cancellables)
     }
@@ -36,13 +43,16 @@ class MatchListViewModel: ObservableObject {
         matches = repo.loadMatches()
     }
 
-    func syncIfOnline() {
+    func syncIfOnline() async {
         guard network.isConnected else { return }
         isLoading = true
-        repo.fetchAndSync { [weak self] in
-            self?.isLoading = false
-            self?.loadFromCache()
+        do {
+            try await repo.fetchAndSync()
+        } catch {
+            errorMessage = error.localizedDescription
         }
+        isLoading = false
+        loadFromCache()
     }
 
     func accept(id: Int) {

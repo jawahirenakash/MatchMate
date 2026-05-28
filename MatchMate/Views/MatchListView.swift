@@ -43,7 +43,7 @@ struct MatchListView: View {
                     }
                     .listStyle(.plain)
                     .refreshable {
-                        viewModel.syncIfOnline()  // make this internal func non-private
+                        await viewModel.syncIfOnline()
                     }
                 }
             }
