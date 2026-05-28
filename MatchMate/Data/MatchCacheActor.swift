@@ -18,10 +18,10 @@ actor MatchCacheActor {
         Realm.Configuration.defaultConfiguration = config
     }
 
-    func loadMatches() -> [MatchProfile] {
-
-        let realm = try! Realm()
-        return MainActor.run { realm.objects(RealmMatchObject.self).map { object in
+    func loadMatches() async -> [MatchProfile] {
+        await MainActor.run {
+            let realm = try! Realm()
+            return realm.objects(RealmMatchObject.self).map { object in
                 MatchProfile(
                     id: object.id,
                     name: object.name,
@@ -34,8 +34,8 @@ actor MatchCacheActor {
         }
     }
 
-    func saveMatches(_ users: [MatchUser]) {
-        MainActor.run {
+    func saveMatches(_ users: [MatchUser]) async {
+        await MainActor.run {
             let realm = try! Realm()
             try! realm.write {
                 for user in users {
@@ -52,8 +52,8 @@ actor MatchCacheActor {
         }
     }
 
-    func updateStatus(id: Int, status: MatchStatus) {
-        MainActor.run {
+    func updateStatus(id: Int, status: MatchStatus) async {
+        await MainActor.run {
             let realm = try! Realm()
             if let match = realm.object(ofType: RealmMatchObject.self, forPrimaryKey: id) {
                 try! realm.write {
