@@ -8,20 +8,19 @@
 
 import Foundation
 
-struct MatchUser: Codable, Identifiable {
+struct MatchUser: Codable, Identifiable, Sendable {
     let id: Int
     let name: String
-    let username: String
     let email: String
     let address: Address
     let company: Company
 
-    struct Address: Codable {
+    struct Address: Codable, Sendable {
         let city: String
         let street: String
     }
 
-    struct Company: Codable {
+    struct Company: Codable, Sendable {
         let name: String
     }
 }

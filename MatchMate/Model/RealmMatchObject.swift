@@ -8,16 +8,11 @@
 import RealmSwift
 import Foundation
 
-enum MatchStatus: String, PersistableEnum {
-    case pending
-    case accepted
-    case declined
-}
+extension MatchStatus: PersistableEnum {}
 
 class RealmMatchObject: Object, ObjectKeyIdentifiable {
     @Persisted(primaryKey: true) var id: Int
     @Persisted var name: String = ""
-    @Persisted var username: String = ""
     @Persisted var city: String = ""
     @Persisted var company: String = ""
     @Persisted var email: String = ""
@@ -27,7 +22,6 @@ class RealmMatchObject: Object, ObjectKeyIdentifiable {
         self.init()
         self.id = user.id
         self.name = user.name
-        self.username = user.username
         self.city = user.address.city
         self.company = user.company.name
         self.email = user.email

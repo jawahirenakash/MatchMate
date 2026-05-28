@@ -1,16 +1,11 @@
-//
-//  MatchListView.swift
-//  MatchMate
-//
-//  Created by user295386 on 5/27/26.
-//
-
-
 import SwiftUI
 
 struct MatchListView: View {
-    @StateObject private var viewModel = MatchListViewModel()
-    @StateObject private var network = NetworkMonitor.shared
+    @StateObject private var viewModel: MatchListViewModel
+
+    init(viewModel: MatchListViewModel) {
+        _viewModel = StateObject(wrappedValue: viewModel)
+    }
 
     var body: some View {
         NavigationStack {
@@ -23,14 +18,14 @@ struct MatchListView: View {
                     }
                 } else {
                     List {
-                        if !network.isConnected {
-                            Label("Offline — showing cached data", systemImage: "wifi.slash")
+                        if let error = viewModel.errorMessage {
+                            Label(error, systemImage: "exclamationmark.triangle")
                                 .font(.caption)
-                                .foregroundColor(.orange)
-                                .listRowBackground(Color.orange.opacity(0.1))
+                                .foregroundColor(.red)
+                                .listRowBackground(Color.red.opacity(0.1))
                         }
 
-                        ForEach(viewModel.matches, id: \.id) { match in
+                        ForEach(viewModel.matches) { match in
                             MatchCardView(
                                 match: match,
                                 onAccept: { viewModel.accept(id: match.id) },
@@ -43,7 +38,7 @@ struct MatchListView: View {
                     }
                     .listStyle(.plain)
                     .refreshable {
-                        await viewModel.syncIfOnline()
+                        await viewModel.refresh()
                     }
                 }
             }

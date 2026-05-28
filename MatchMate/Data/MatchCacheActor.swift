@@ -1,30 +1,22 @@
-//
-//  MatchRepository.swift
-//  MatchMate
-//
-//  Created by user295386 on 5/27/26.
-//
-
-
-import Foundation
 import RealmSwift
 
-class MatchRepository: MatchRepositoryProtocol {
-    static let shared = MatchRepository()
-    
-    private init() {}
+actor MatchCacheActor {
 
-    func loadMatches() -> [RealmMatchObject] {
+    func loadMatches() -> [MatchProfile] {
         let realm = try! Realm()
-        return Array(realm.objects(RealmMatchObject.self))
+        return realm.objects(RealmMatchObject.self).map { object in
+            MatchProfile(
+                id: object.id,
+                name: object.name,
+                email: object.email,
+                city: object.city,
+                company: object.company,
+                status: object.status
+            )
+        }
     }
 
-    func fetchAndSync() async throws {
-        let users = try await UserAPIService.shared.fetchUsers()
-        saveToRealm(users: users)
-    }
-    
-    private func saveToRealm(users: [MatchUser]) {
+    func saveMatches(_ users: [MatchUser]) {
         let realm = try! Realm()
         try! realm.write {
             for user in users {

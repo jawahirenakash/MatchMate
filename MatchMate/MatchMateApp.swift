@@ -9,9 +9,11 @@ import SwiftUI
 
 @main
 struct MatchMateApp: App {
+    @StateObject private var container = DIContainer()
+
     var body: some Scene {
         WindowGroup {
-            MatchListView()
+            MatchListView(viewModel: container.makeMatchListViewModel())
         }
     }
 }
