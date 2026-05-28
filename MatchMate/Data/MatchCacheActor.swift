@@ -2,7 +2,7 @@ import RealmSwift
 
 actor MatchCacheActor {
 
-    static let schemaVersion: UInt64 = 1
+    static let schemaVersion: UInt64 = 2
 
     static func configureMigration() {
         let config = Realm.Configuration(
@@ -10,7 +10,7 @@ actor MatchCacheActor {
             migrationBlock: { migration, oldSchemaVersion in
                 if oldSchemaVersion < schemaVersion {
                     migration.enumerateObjects(ofType: RealmMatchObject.className()) { _, newObject in
-                        newObject?["status"] = MatchStatus.pending.rawValue
+                        newObject?[AppConstants.RealmKey.status] = MatchStatus.pending.rawValue
                     }
                 }
             }

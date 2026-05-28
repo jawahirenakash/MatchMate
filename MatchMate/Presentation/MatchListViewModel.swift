@@ -20,7 +20,7 @@ final class MatchListViewModel: ObservableObject {
 
     func refresh() async {
         guard networkMonitor.isConnected else {
-            errorMessage = "No internet connection"
+            errorMessage = AppConstants.UI.noInternet
             return
         }
         isLoading = true

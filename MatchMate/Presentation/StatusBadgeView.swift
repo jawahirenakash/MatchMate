@@ -4,7 +4,7 @@ struct StatusBadgeView: View {
     let status: MatchStatus
 
     var body: some View {
-        Text(status == .accepted ? "Accepted" : "Declined")
+        Text(status == .accepted ? AppConstants.UI.accepted : AppConstants.UI.declined)
             .font(.subheadline.weight(.semibold))
             .foregroundColor(.white)
             .frame(maxWidth: .infinity)

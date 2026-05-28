@@ -7,7 +7,7 @@ struct MatchCardView: View {
     let onDecline: () -> Void
 
     private var avatarURL: URL? {
-        URL(string: "https://i.pravatar.cc/150?u=\(match.id)")
+        APIConfig.Avatar.url(for: match.id)
     }
 
     var body: some View {

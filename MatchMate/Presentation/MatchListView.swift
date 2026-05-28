@@ -13,7 +13,7 @@ struct MatchListView: View {
                 if viewModel.isLoading && viewModel.matches.isEmpty {
                     VStack {
                         Spacer()
-                        ProgressView("Loading matches...")
+                        ProgressView(AppConstants.UI.loading)
                         Spacer()
                     }
                 } else {
@@ -42,7 +42,7 @@ struct MatchListView: View {
                     }
                 }
             }
-            .navigationTitle("Profile Matches")
+            .navigationTitle(AppConstants.UI.navigationTitle)
             .navigationBarTitleDisplayMode(.large)
         }
     }

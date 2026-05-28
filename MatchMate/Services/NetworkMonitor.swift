@@ -22,7 +22,7 @@ final class NetworkMonitor: NetworkMonitoring, ObservableObject {
     }
 
     private let monitor = NWPathMonitor()
-    private let queue = DispatchQueue(label: "NetworkMonitor")
+    private let queue = DispatchQueue(label: APIConfig.Queue.networkMonitor)
 
     init() {
         monitor.pathUpdateHandler = { [weak self] path in
