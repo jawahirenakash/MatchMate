@@ -9,7 +9,7 @@ import SwiftUI
 
 @main
 struct MatchMateApp: App {
-    @StateObject private var container = DIContainer()
+    private let container = DIContainer()
 
     var body: some Scene {
         WindowGroup {

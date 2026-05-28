@@ -1,4 +1,4 @@
-enum MatchStatus: String, Codable, Sendable {
+enum MatchStatus: String, Codable, Sendable, CaseIterable {
     case pending
     case accepted
     case declined
