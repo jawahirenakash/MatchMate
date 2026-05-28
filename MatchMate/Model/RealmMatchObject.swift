@@ -5,7 +5,7 @@
 //  Created by user295386 on 5/27/26.
 //
 
-import RealmSwift
+@preconcurrency import RealmSwift
 import Foundation
 
 extension MatchStatus: PersistableEnum {}

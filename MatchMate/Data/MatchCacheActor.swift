@@ -1,4 +1,4 @@
-import RealmSwift
+@preconcurrency import RealmSwift
 
 actor MatchCacheActor {
 
