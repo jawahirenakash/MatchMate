@@ -2,6 +2,22 @@ import RealmSwift
 
 actor MatchCacheActor {
 
+    static let schemaVersion: UInt64 = 1
+
+    static func configureMigration() {
+        let config = Realm.Configuration(
+            schemaVersion: schemaVersion,
+            migrationBlock: { migration, oldSchemaVersion in
+                if oldSchemaVersion < schemaVersion {
+                    migration.enumerateObjects(ofType: RealmMatchObject.className()) { _, newObject in
+                        newObject?["status"] = MatchStatus.pending.rawValue
+                    }
+                }
+            }
+        )
+        Realm.Configuration.defaultConfiguration = config
+    }
+
     func loadMatches() -> [MatchProfile] {
         let realm = try! Realm()
         return realm.objects(RealmMatchObject.self).map { object in

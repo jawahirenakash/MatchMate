@@ -2,6 +2,10 @@ import Foundation
 
 @MainActor
 final class DIContainer {
+
+    init() {
+        MatchCacheActor.configureMigration()
+    }
     lazy var networkMonitor: NetworkMonitoring = NetworkMonitor()
 
     lazy var apiService: MatchAPIService = {
