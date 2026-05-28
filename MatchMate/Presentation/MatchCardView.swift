@@ -1,64 +1,63 @@
 import SwiftUI
+import SDWebImageSwiftUI
 
 struct MatchCardView: View {
     let match: MatchProfile
     let onAccept: () -> Void
     let onDecline: () -> Void
 
+    private var avatarURL: URL? {
+        URL(string: "https://i.pravatar.cc/150?u=\(match.id)")
+    }
+
     var body: some View {
         VStack(spacing: 12) {
-            HStack(spacing: 16) {
-                Circle()
-                    .fill(Color.blue.opacity(0.2))
-                    .frame(width: 60, height: 60)
-                    .overlay(
-                        Text(match.name.prefix(2).uppercased())
-                            .font(.title3.bold())
-                            .foregroundColor(.blue)
-                    )
+            WebImage(url: avatarURL)
+                .resizable()
+                .scaledToFill()
+                .frame(width: 100, height: 100)
+                .clipShape(Circle())
+                .overlay(Circle().stroke(Color.teal, lineWidth: 2))
 
-                VStack(alignment: .leading, spacing: 4) {
-                    Text(match.name)
-                        .font(.headline)
-                    Text(match.email)
-                        .font(.caption)
-                        .foregroundColor(.secondary)
-                    Label(match.city, systemImage: "location")
-                        .font(.caption)
-                        .foregroundColor(.secondary)
-                    Label(match.company, systemImage: "building")
-                        .font(.caption)
-                        .foregroundColor(.secondary)
-                }
+            Text(match.name)
+                .font(.title3.weight(.bold))
+                .foregroundColor(.teal)
+                .multilineTextAlignment(.center)
 
-                Spacer()
-            }
+            Text(match.city)
+                .font(.subheadline)
+                .foregroundColor(.secondary)
 
-            StatusBadgeView(status: match.status)
-                .frame(maxWidth: .infinity, alignment: .trailing)
+            Text(match.company)
+                .font(.caption)
+                .foregroundColor(.secondary)
 
             if match.status == .pending {
-                HStack(spacing: 16) {
+                HStack(spacing: 32) {
                     Button(action: onDecline) {
-                        Label("Decline", systemImage: "xmark")
-                            .frame(maxWidth: .infinity)
-                            .padding(.vertical, 8)
+                        Image(systemName: "xmark.circle")
+                            .font(.system(size: 36))
+                            .foregroundColor(.red)
                     }
-                    .buttonStyle(.bordered)
-                    .tint(.red)
+                    .buttonStyle(.plain)
 
                     Button(action: onAccept) {
-                        Label("Accept", systemImage: "checkmark")
-                            .frame(maxWidth: .infinity)
-                            .padding(.vertical, 8)
+                        Image(systemName: "checkmark.circle")
+                            .font(.system(size: 36))
+                            .foregroundColor(.teal)
                     }
-                    .buttonStyle(.borderedProminent)
-                    .tint(.green)
+                    .buttonStyle(.plain)
                 }
+                .padding(.top, 4)
+            } else {
+                StatusBadgeView(status: match.status)
+                    .padding(.horizontal)
             }
         }
-        .padding()
-        .background(Color(.systemGray6))
-        .clipShape(RoundedRectangle(cornerRadius: 16))
+        .padding(20)
+        .frame(maxWidth: .infinity)
+        .background(Color(.systemBackground))
+        .cornerRadius(16)
+        .shadow(color: .black.opacity(0.08), radius: 8, x: 0, y: 3)
     }
 }
